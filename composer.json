@@ -11,7 +11,7 @@
   "require": {
     "php": ">=7.1",
     "spryker/api": "^0.2",
-    "spryker/company-business-unit": "^1.0"
+    "spryker/company-business-unit": "^1.0.0 || ^2.0.0"
   },
   "require-dev": {
     "codeception/codeception": "^2.4",
