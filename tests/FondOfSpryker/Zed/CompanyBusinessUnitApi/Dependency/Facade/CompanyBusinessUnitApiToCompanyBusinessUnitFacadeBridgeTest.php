@@ -4,10 +4,10 @@
 namespace FondOfSpryker\Zed\CompanyApi\Dependency\Facade;
 
 use Codeception\Test\Unit;
-use FondOfSpryker\Zed\CompanyBusinessUnit\Business\CompanyBusinessUnitFacade;
 use FondOfSpryker\Zed\CompanyBusinessUnitApi\Dependency\Facade\CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridge;
 use Generated\Shared\Transfer\CompanyBusinessUnitResponseTransfer;
 use Generated\Shared\Transfer\CompanyBusinessUnitTransfer;
+use Spryker\Zed\CompanyBusinessUnit\Business\CompanyBusinessUnitFacadeInterface;
 
 class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
 {
@@ -17,7 +17,7 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
     protected $companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge;
 
     /**
-     * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\CompanyBusinessUnit\Business\CompanyBusinessUnitFacade
+     * @var \PHPUnit\Framework\MockObject\MockObject|\Spryker\Zed\CompanyBusinessUnit\Business\CompanyBusinessUnitFacadeInterface
      */
     protected $companyBusinessUnitFacadeMock;
 
@@ -47,7 +47,7 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->companyBusinessUnitFacadeMock = $this->getMockBuilder(CompanyBusinessUnitFacade::class)
+        $this->companyBusinessUnitFacadeMock = $this->getMockBuilder(CompanyBusinessUnitFacadeInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -72,7 +72,10 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->with($this->companyBusinessUnitTransferMock)
             ->willReturn($this->companyBusinessUnitTransferMock);
 
-        $this->assertInstanceOf(CompanyBusinessUnitTransfer::class, $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->getCompanyBusinessUnitById($this->companyBusinessUnitTransferMock));
+        $this->assertInstanceOf(
+            CompanyBusinessUnitTransfer::class,
+            $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->getCompanyBusinessUnitById($this->companyBusinessUnitTransferMock)
+        );
     }
 
     /**
@@ -85,7 +88,10 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->with($this->companyBusinessUnitTransferMock)
             ->willReturn($this->companyBusinessUnitResponseTransferMock);
 
-        $this->assertInstanceOf(CompanyBusinessUnitResponseTransfer::class, $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->create($this->companyBusinessUnitTransferMock));
+        $this->assertInstanceOf(
+            CompanyBusinessUnitResponseTransfer::class,
+            $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->create($this->companyBusinessUnitTransferMock)
+        );
     }
 
     /**
@@ -98,7 +104,10 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->with($this->companyBusinessUnitTransferMock)
             ->willReturn($this->companyBusinessUnitResponseTransferMock);
 
-        $this->assertInstanceOf(CompanyBusinessUnitResponseTransfer::class, $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->update($this->companyBusinessUnitTransferMock));
+        $this->assertInstanceOf(
+            CompanyBusinessUnitResponseTransfer::class,
+            $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->update($this->companyBusinessUnitTransferMock)
+        );
     }
 
     /**
@@ -111,6 +120,9 @@ class CompanyBusinessUnitApiToCompanyBusinessUnitFacadeBridgeTest extends Unit
             ->with($this->companyBusinessUnitTransferMock)
             ->willReturn($this->companyBusinessUnitResponseTransferMock);
 
-        $this->assertInstanceOf(CompanyBusinessUnitResponseTransfer::class, $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->delete($this->companyBusinessUnitTransferMock));
+        $this->assertInstanceOf(
+            CompanyBusinessUnitResponseTransfer::class,
+            $this->companyBusinessUnitApiToCompanyBusinessUnitFacadeBridge->delete($this->companyBusinessUnitTransferMock)
+        );
     }
 }
