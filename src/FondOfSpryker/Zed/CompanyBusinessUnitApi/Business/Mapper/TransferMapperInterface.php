@@ -16,7 +16,7 @@ interface TransferMapperInterface
     /**
      * @param array $data
      *
-     * @return \Generated\Shared\Transfer\CompanyApiTransfer[]
+     * @return \Generated\Shared\Transfer\CompanyBusinessUnitApiTransfer[]
      */
     public function toTransferCollection(array $data): array;
 }

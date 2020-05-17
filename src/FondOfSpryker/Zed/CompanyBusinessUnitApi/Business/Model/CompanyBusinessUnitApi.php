@@ -121,7 +121,7 @@ class CompanyBusinessUnitApi implements CompanyBusinessUnitApiInterface
             $companyBusinessUnitTransfer
         );
 
-        if ($companyBusinessUnitTransfer === null || $companyBusinessUnitTransfer->getIdCompanyBusinessUnit() === null) {
+        if ($companyBusinessUnitTransfer->getIdCompanyBusinessUnit() === null) {
             throw new EntityNotFoundException(sprintf(
                 'Company business unit not found for id %s',
                 $idCompanyBusinessUnit
@@ -149,7 +149,7 @@ class CompanyBusinessUnitApi implements CompanyBusinessUnitApiInterface
             $companyBusinessUnitTransfer
         );
 
-        if ($companyBusinessUnitTransfer === null || $companyBusinessUnitTransfer->getIdCompanyBusinessUnit() === null) {
+        if ($companyBusinessUnitTransfer->getIdCompanyBusinessUnit() === null) {
             throw new EntityNotFoundException(sprintf(
                 'Company business unit not found for id %s',
                 $idCompanyBusinessUnit
@@ -204,8 +204,6 @@ class CompanyBusinessUnitApi implements CompanyBusinessUnitApiInterface
     /**
      * @param \Generated\Shared\Transfer\ApiRequestTransfer $apiRequestTransfer
      *
-     * @throws
-     *
      * @return \Generated\Shared\Transfer\ApiCollectionTransfer
      */
     public function find(ApiRequestTransfer $apiRequestTransfer): ApiCollectionTransfer
@@ -254,8 +252,6 @@ class CompanyBusinessUnitApi implements CompanyBusinessUnitApiInterface
     }
 
     /**
-     * @throws
-     *
      * @return \Generated\Shared\Transfer\PropelQueryBuilderColumnSelectionTransfer
      */
     protected function buildColumnSelection(): PropelQueryBuilderColumnSelectionTransfer
@@ -281,7 +277,7 @@ class CompanyBusinessUnitApi implements CompanyBusinessUnitApiInterface
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      *
-     * @return array|\Generated\Shared\Transfer\ApiCollectionTransfer
+     * @return \Generated\Shared\Transfer\ApiCollectionTransfer
      */
     protected function addPagination(
         ModelCriteria $query,
