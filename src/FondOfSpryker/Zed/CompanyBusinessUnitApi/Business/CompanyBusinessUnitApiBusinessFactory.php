@@ -35,7 +35,6 @@ class CompanyBusinessUnitApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-
      * @return \FondOfSpryker\Zed\CompanyBusinessUnitApi\Dependency\QueryContainer\CompanyBusinessUnitApiToApiQueryContainerInterface
      */
     protected function getApiQueryContainer(): CompanyBusinessUnitApiToApiQueryContainerInterface
@@ -52,7 +51,6 @@ class CompanyBusinessUnitApiBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-
      * @return \FondOfSpryker\Zed\CompanyBusinessUnitApi\Dependency\Facade\CompanyBusinessUnitApiToCompanyBusinessUnitFacadeInterface
      */
     protected function getCompanyFacade(): CompanyBusinessUnitApiToCompanyBusinessUnitFacadeInterface
