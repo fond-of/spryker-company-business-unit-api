@@ -3,6 +3,7 @@
 
 namespace FondOfSpryker\Zed\CompanyBusinessUnitApi\Business\Model;
 
+use ArrayObject;
 use Codeception\Test\Unit;
 use Exception;
 use FondOfSpryker\Zed\CompanyBusinessUnitApi\Business\Mapper\TransferMapperInterface;
@@ -186,6 +187,9 @@ class CompanyBusinessUnitApiTest extends Unit
      */
     public function testAddEntityNotSavedException(): void
     {
+        $errors = new ArrayObject();
+        $errors->append($this->responseMessageTransferMock);
+
         $this->apiDataTransferMock->expects($this->atLeastOnce())
             ->method('getData')
             ->willReturn($this->transferData);
@@ -200,21 +204,11 @@ class CompanyBusinessUnitApiTest extends Unit
 
         $this->companyBusinessUnitResponseTransferMock->expects($this->atLeastOnce())
             ->method('getMessages')
-            ->willReturn($this->iteratorMock);
+            ->willReturn($errors);
 
-        $this->iteratorMock->expects($this->once())
-            ->method('rewind');
-
-        $this->iteratorMock->expects($this->exactly(1))
-            ->method('next');
-
-        $this->iteratorMock->expects($this->exactly(2))
-            ->method('valid')
-            ->willReturnOnConsecutiveCalls(true);
-
-        $this->iteratorMock->expects($this->exactly(1))
-            ->method('current')
-            ->willReturn($this->responseMessageTransferMock);
+        $this->responseMessageTransferMock->expects($this->atLeastOnce())
+            ->method('getText')
+            ->willReturn("message");
 
         try {
             $this->companyBusinessUnitApi->add($this->apiDataTransferMock);
